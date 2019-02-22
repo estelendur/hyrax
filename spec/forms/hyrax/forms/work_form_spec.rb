@@ -100,7 +100,7 @@ RSpec.describe Hyrax::Forms::WorkForm do
     let(:params) { ActionController::Parameters.new(attributes) }
     let(:attributes) do
       {
-        title: ['foo'],
+        title: ['aaa', 'bbb', 'ccc'],
         description: [''],
         visibility: 'open',
         parent_id: '123',
@@ -116,7 +116,7 @@ RSpec.describe Hyrax::Forms::WorkForm do
     subject { described_class.model_attributes(params) }
 
     it 'permits parameters' do
-      expect(subject['title']).to eq ['foo']
+      expect(subject['title']).to eq ['aaa', 'bbb', 'ccc']
       expect(subject['description']).to be_empty
       expect(subject['visibility']).to eq 'open'
       expect(subject['license']).to eq ['http://creativecommons.org/licenses/by/3.0/us/']
